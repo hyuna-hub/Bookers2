@@ -1,4 +1,4 @@
-<!-- 投稿ユーザーのプロフィール -->
+<!-- ユーザープロフィール -->
 <div class="profile-container">
     <h3 class="profile-name"><%= @user.name %></h3>
     <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
@@ -26,10 +26,28 @@
 
 <% end %>
 
-<!-- 投稿の詳細 -->
-<p id="notice"><%=  notice %></p>
+<!-- 投稿一覧 -->
+<h1>Books</h1>
 
-<p><strong>Title:</strong><%= @book.title %></p>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Opinion</th>
+		</tr>
+	</thead>
 
-<p><strong>Body:</strong><%= @book.body %></p>
-
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<td><%= book.title %></td>
+			<td><%= book.body %></td>
+			<td>
+				<%= link_to "Show", book_path(book.id) %>
+				<%= link_to "Edit", edit_book_path(book.id) %>
+				<%= link_to "Destroy", book_path(book.id), method: :delete, data: { confirm: "Are you sure？" } %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -19,11 +19,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @profile_image = Profile_image.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
+    @profile_image = Profile_image.find(params[:id])
     @user.update(user_params)
+    @profile_image.update(profile_image_params[:id])
     redirect_to user_path(@user.id)
   end
 
