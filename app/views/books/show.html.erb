@@ -1,7 +1,16 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-4" >
+
+
 <!-- 投稿ユーザーのプロフィール -->
 <div class="profile-container">
     <h3 class="profile-name"><%= @user.name %></h3>
-    <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+    <% if @user.id == current_user.id %>
+        <p><%= link_to "edit", edit_user_path(@user), class: "pull-right" %></p>
+    <% end %>
 </div>
 
 <!-- 新規投稿 -->
@@ -26,6 +35,10 @@
 
 <% end %>
 
+		</div>
+
+		<div class="col-lg-8">
+
 <!-- 投稿の詳細 -->
 <p id="notice"><%=  notice %></p>
 
@@ -33,3 +46,7 @@
 
 <p><strong>Body:</strong><%= @book.body %></p>
 
+		</div>
+
+</div>
+</div>

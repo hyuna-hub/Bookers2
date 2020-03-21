@@ -32,11 +32,11 @@
                   <%= link_to 'Home', user_path(current_user.id) %>
                 </li>
                 <li class="">
-                  <%= link_to 'Books', _path %>
+                  <%= link_to 'Books', books_path %>
                   <!-- 投稿一覧 -->
                 </li>
                 <li class="">
-                  <%= link_to 'Users', _path %>
+                  <%= link_to 'Users', users_path %>
                   <!-- userの一覧 -->
                 </li>
                 <li class="">
@@ -45,11 +45,11 @@
                 
               <% else %>
                 <li class="">
-                  <%= link_to 'Home', top_path %>
+                  <%= link_to 'Home', books_top_path %>
                   <!-- topに戻る -->
                 </li>
                 <li class="">
-                  <%= link_to 'About', _path %>
+                  <%= link_to 'About', books_about_path %>
                   <!-- aboutに移動ーhome/about -->
                 </li>
                 <li class="">
