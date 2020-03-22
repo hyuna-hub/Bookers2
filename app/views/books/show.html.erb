@@ -15,8 +15,9 @@
 </div>
 
 <!-- 新規投稿 -->
+<div class="row">
 <h2>New book</h2>
-<%= form_for @book do |f| %>
+<%= form_for @new_book do |f| %>
 
 	<%= render 'layouts/error_messages' %>
 
@@ -35,6 +36,7 @@
 	</div>
 
 <% end %>
+</div>
 
 		</div>
 
@@ -43,9 +45,33 @@
 <!-- 投稿の詳細 -->
 <p id="notice"><%=  notice %></p>
 
-<p><strong>Title:</strong><%= @book.title %></p>
+<h1><strong>Book detail</strong></h1>
 
-<p><strong>Body:</strong><%= @book.body %></p>
+<table>
+	<thead>
+		<tr>
+			<th><strong>Title:</strong><%= @book.title %></th>
+
+			<th><strong>Opinion:</strong><%= @book.body %></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<td><%= book.title %></td>
+			<td><%= book.body %></td>
+			<td>
+			    <% if @book.user == current_user %>
+					<%= link_to "Show", book_path(book.id) %>
+					<%= link_to "Edit", edit_book_path(book.id) %>
+					<%= link_to "Destroy", book_path(book.id), method: :delete, data: { confirm: "Are you sure？" } %>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 
 		</div>
 
