@@ -5,7 +5,8 @@
 
 <!-- ユーザープロフィール -->
 <div class="profile-container">
-    <h3 class="profile-name"><%= @user.name %></h3>
+	<h2>User info</h2>
+    <h3 class="profile-name"><%= @name %></h3>
     <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
     <% if @user.id == current_user.id %>
         <p><%= link_to "edit", edit_user_path(@user), class: "pull-right" %></p>
@@ -54,7 +55,11 @@
 			<td><%= book.title %></td>
 			<td><%= book.body %></td>
 			<td>
-				<%= link_to "Show", book_path(book.id) %>
+			    <% if @book.user == current_user %>
+					<%= link_to "Show", book_path(book.id) %>
+					<%= link_to "Edit", edit_book_path(book.id) %>
+					<%= link_to "Destroy", book_path(book.id), method: :delete, data: { confirm: "Are you sure？" } %>
+				<% end %>
 			</td>
 		</tr>
 		<% end %>

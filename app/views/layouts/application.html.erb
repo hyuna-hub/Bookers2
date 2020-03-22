@@ -29,7 +29,7 @@
 
               <% if user_signed_in? %>
                 <li class="">
-                  <%= link_to 'Home', user_path(current_user.id) %>
+                  <%= link_to 'Home', user_path(current_user) %>
                 </li>
                 <li class="">
                   <%= link_to 'Books', books_path %>
@@ -45,11 +45,11 @@
                 
               <% else %>
                 <li class="">
-                  <%= link_to 'Home', books_top_path %>
+                  <%= link_to 'Home', root_path %>
                   <!-- topに戻る -->
                 </li>
                 <li class="">
-                  <%= link_to 'About', books_about_path %>
+                  <%= link_to 'About', home_about_path %>
                   <!-- aboutに移動ーhome/about -->
                 </li>
                 <li class="">
