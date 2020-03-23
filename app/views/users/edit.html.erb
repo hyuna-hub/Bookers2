@@ -3,17 +3,20 @@
 <%= render 'layouts/error_user' %>
 
 <%= form_for(current_user) do |f| %>
-    <label class="control-label sr-only" for="inputEmail">Name</label>
-    <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"name"%>
-    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+   	<div class="form-group">
+    	<p>Name</p>
+    	<%= f.text_field :name %>
+	</div>
 
-    <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
-    <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
-    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+	<div class="form-group">
+    	<p>Image</p>
+    	<%= f.attachment_field :profile_image %>
+    </div>
 
-    <label class="control-label sr-only" for="inputEmail">Introduction</label>
-    <%= f.text_field :introduction, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"introduction"%>
-
+    <div class="form-group">
+    	<p>Introduction</p>
+    	<%= f.text_area :introduction %>
+	</div>
 
     <%= f.submit "Update User", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
 <% end %>
