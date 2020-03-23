@@ -1,0 +1,19 @@
+<h2 class: "pull-left">New book</h2>
+
+<%= form_for @book do |f| %>
+
+	<div class="field">
+	<label>Title</label>
+	<%= f.text_field :title %>
+	</div>
+
+	<div class="field">
+	<label>Opinion</label>
+	<%= f.text_area :body %>
+	</div>
+
+	<div class="field">
+	<%= f.submit 'Create Book' %>
+	</div>
+
+<% end %>

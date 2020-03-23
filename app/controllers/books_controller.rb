@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def top
     if user_signed_in?
-      redirect_to user_path(current_user)
+       redirect_to user_path(current_user)
     end
   end
 
@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   def index
   		@books = Book.all
       @book = Book.new
-      @user = @book.user
+      @user = current_user
   end
 
   def new
@@ -34,16 +34,15 @@ class BooksController < ApplicationController
   end
 
   def edit
-  	book = Book.find(params[:id])
+  	@book = Book.find(params[:id])
   end
 
   def update
-    	@book = Book.find(params[:id])
+     @book = Book.find(params[:id])
 	if @book.update(book_params)
 		flash[:notice] = 'Book was successfully updated.'
 		redirect_to book_path(@book.id)
   else
-      @book = Book.find(params[:id])
       render :edit
 	end
   end

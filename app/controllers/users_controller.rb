@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
-      @books = Book.all
       @book = Book.new
-      @user = @book.user
+      @users = User.all
+      @user = current_user
   end
 
   def new
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      flash[:notice] = 'Plofile was successfully createed.'
   		redirect_to admin_user_url(@user)
   	else
   		render :new
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
         redirect_to book_path(@book.id)
     else
         @books = Book.all
-        render :show
+        render :index
     end
   end
 
@@ -41,8 +42,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+       flash[:notice] = 'Plofile was successfully updated.'
+       redirect_to user_path(@user.id)
+    else
+       render :edit
+    end
   end
 
 private

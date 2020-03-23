@@ -1,0 +1,6 @@
+<h2>User info</h2>
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+    <p>name<%= @user.name %></p>
+    <p>introduction<%= @user.introduction %></p>
+
+    <p><%= link_to "edit", edit_user_path(current_user.id), class: "pull-right" %></p>
