@@ -1,6 +1,7 @@
 <% if @user.errors.any? %>
     <div class = "alert alert-warning">
         <ul>
+        	<% @user.errors.count%>errors
             <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>

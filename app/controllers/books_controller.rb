@@ -1,9 +1,4 @@
 class BooksController < ApplicationController
-  def top
-    if user_signed_in?
-       redirect_to user_path(current_user)
-    end
-  end
 
   def show
   		@book = Book.find(params[:id])
@@ -57,6 +52,7 @@ class BooksController < ApplicationController
         book.destroy
         redirect_to books_path
   end
+
 
   private
     def book_params
