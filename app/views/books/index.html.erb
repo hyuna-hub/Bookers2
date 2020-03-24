@@ -1,9 +1,10 @@
 <%= render 'layouts/error_messages' %>
 
+<div class='body'>
 <div class="container">
-      <div class="row">
 
-      	<div class="col-lg-3" >
+      <div class="row">
+      	<div class="col-xs-3" >
 
 <!-- ユーザープロフィール -->
 <div class="profile-container">
@@ -17,16 +18,17 @@
 
 		</div>
 
-		<div class="col-lg-9">
+		<div class="col-xs-9">
 
 <!-- 投稿一覧 -->
-<h1>Books</h1>
-<table>
+<h2>Books</h2>
+<table class="table">
 	<thead>
 		<tr>
 			<th></th>
 			<th>Title</th>
 			<th>Opinion</th>
+			<th colspan="3"></th>
 		</tr>
 	</thead>
 
@@ -46,5 +48,6 @@
 
 		</div>
 
+</div>
 </div>
 </div>

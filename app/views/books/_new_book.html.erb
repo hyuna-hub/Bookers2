@@ -1,22 +1,19 @@
-<h2 class: "pull-left">New book</h2>
+<h2>New book</h2>
 
 <%= form_for @book do |f| %>
 
 	<div class="field row">
 	<label for="book_title">Title</label>
-	<input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title">
 	<%= f.text_field :title %>
 	</div>
 
 	<div class="field row">
 	<label for="book_opinion">Opinion</label>
-	<textarea class="col-xs-12 book_body" id="book_body">
 	<%= f.text_area :body %>
 	</textarea>
 	</div>
 
 	<div class="actions row">
-	<input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with='Create Book'>
 	<%= f.submit 'Create Book' %>
 	</div>
 
