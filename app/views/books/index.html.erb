@@ -41,6 +41,11 @@
 			</td>
 			<td><%= link_to book.title, book_path(book.id) %></td>
 			<td><%= book.body %></td>
+<!-- コメントカウント -->
+			<td><p class="comment-count"><%= @book.post_comments.count %>件コメント</p>
+  			</td>
+<!-- コメントカウント -->
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
