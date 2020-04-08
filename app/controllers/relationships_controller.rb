@@ -3,9 +3,9 @@ class RelationshipsController < ApplicationController
 	before_action :set_user
 
   def create
-    user = User.find(params[:relationship][:follow_id])
-    following = current_user.follow(user)
-    if following.save
+    @user = User.find(params[:relationship][:follow_id])
+    @following = current_user.follow(user)
+    if @following.save
       flash[:success] = 'フォローしました'
       redirect_to user
     else
@@ -15,9 +15,9 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:relationship][:follow_id])
-    following = current_user.unfollow(user)
-    if following.destroy
+    @user = User.find(params[:relationship][:follow_id])
+    @following = current_user.unfollow(user)
+    if @following.destroy
       flash[:success] = 'フォローを解除しました'
       redirect_to user
     else

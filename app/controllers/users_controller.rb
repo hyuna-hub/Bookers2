@@ -4,14 +4,17 @@ class UsersController < ApplicationController
       @book = Book.new
       @users = User.all
       @user = current_user
+      @following = current_user.follow(@user)
   end
 
   def new
   	@user = User.new
     @book = Book.new
+    @following = current_user.follow(@user)
   end
 
   def create
+    @following = current_user.follow(@user)
   	@user = User.new(user_params)
   	if @user.save
       flash[:notice] = 'Plofile was successfully createed.'
@@ -34,6 +37,7 @@ class UsersController < ApplicationController
   def show
     @book = Book.new
     @user = current_user
+    @following = current_user.follow(@user)
   end
 
 
@@ -57,11 +61,13 @@ class UsersController < ApplicationController
   end
 
   def follow
-    
+    @user = current_user
+    @follows = Following.all
   end
 
   def follower
-    
+    @user = current_user
+    @follows = Follower.all
   end
 
 private
